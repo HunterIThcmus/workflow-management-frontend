@@ -59,7 +59,7 @@ export default function BoardList(props) {
                     {board.name}
                   </Typography>
                   <Typography>
-                    this is your board
+                    this is your board name
                   </Typography>
                 </CardContent>
                 <CardActions>
