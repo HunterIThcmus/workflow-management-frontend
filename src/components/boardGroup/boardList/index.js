@@ -30,11 +30,11 @@ const useStyles = makeStyles((theme) => ({
         margin: theme.spacing(3, 0, 2),
     },
 }));
-let dafaultdata=[{_id:1223,name:"test"},{_id:123,name:"good"}]
+let dafaultdata=[{_id:"",name:""}]
 export default function BoardList(props) {
     const classes = useStyles();
     const [data, setData] = useState(dafaultdata);
-    const [isBusy, setBusy] = useState(false);
+    const [isBusy, setBusy] = useState(true);
 
     
     useEffect(() => {
@@ -43,6 +43,7 @@ export default function BoardList(props) {
         let body = response.data;
         console.log(body.data);
         setData(body.data);
+        setBusy(false);
       }
       getListBoard();
     }, []);
@@ -51,7 +52,8 @@ export default function BoardList(props) {
         <Container className={classes.cardGrid} maxWidth="md">
         {/* End hero unit */}
         <Grid container spacing={4}>
-          {data.map((board,index) => (
+        {isBusy ? (<p>loading...</p>) : (
+          data.map((board,index) => (
             <Grid item key={board.id} xs={12} sm={6} md={4}>
               <Card className={classes.card}>
                 <CardContent className={classes.cardContent}>
@@ -72,7 +74,7 @@ export default function BoardList(props) {
                 </CardActions>
               </Card>
             </Grid>
-          ))}
+          )))}
         </Grid>
       </Container>
     );
