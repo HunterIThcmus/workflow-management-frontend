@@ -1,12 +1,14 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
-import App from './App';
+import App from './components/app';
+import BoardList from './components/boardGroup/boardList';
+import BoardAdd from './components/boardGroup/addBoard';
 import * as serviceWorker from './serviceWorker';
 
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+    <BoardList />
   </React.StrictMode>,
   document.getElementById('root')
 );
